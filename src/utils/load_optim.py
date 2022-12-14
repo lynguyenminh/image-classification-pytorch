@@ -31,8 +31,6 @@ def load_optimization(model=None, optim_name='Adam',lr=0.001):
         optimizer_ft = optim.ASGD(model.parameters(), lr=lr)
     elif optim_name=="NAdam":
         optimizer_ft = optim.NAdam(model.parameters(), lr=lr)
-    elif optim_name=="RAdam":
-        optimizer_ft = optim.RAdam(model.parameters(), lr=lr)
     elif optim_name=="Rprop":
         optimizer_ft = optim.Rprop(model.parameters(), lr=lr)
 
