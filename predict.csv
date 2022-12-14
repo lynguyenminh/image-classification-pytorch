@@ -1,0 +1,10 @@
+fname,predict_class
+../predict/imgs/091611.jpg.jpg,male
+../predict/imgs/091615.jpg.jpg,male
+../predict/imgs/091616.jpg.jpg,male
+../predict/imgs/091618.jpg.jpg,male
+../predict/imgs/091619.jpg.jpg,female
+../predict/imgs/132494.jpg.jpg,female
+../predict/imgs/132497.jpg.jpg,female
+../predict/imgs/132499.jpg.jpg,female
+../predict/imgs/132500.jpg.jpg,female
