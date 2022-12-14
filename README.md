@@ -50,6 +50,15 @@ Main-folder/
 ```
 
 ## 2. Train model
+**CHÚ Ý**
+
+Ta có thể thực hiện tăng cường dữ liệu trực tiếp bằng Pytorch trước khi train. Sửả code ở [đây](https://github.com/lynguyenminh/image-classification-pytorch/blob/master/src/utils/load_data.py#L18)
+
+Có thể thay đổi hàm loss function tại [đây](https://github.com/lynguyenminh/image-classification-pytorch/blob/master/src/train.py#L48). Các hàm có sẵn là: `CrossEntropyLoss`, `NLLLoss`.
+
+Có thể thay đổi hàm optimization tại [đây.](https://github.com/lynguyenminh/image-classification-pytorch/blob/master/src/train.py#L51). Các hàm có sẵn là: `Adam`, `RAdam`, `SGD`, `Adadelta`, `Adagrad`, `AdamW`, `Adamax`, `ASGD`, `NAdam`, `Rprop`.
+
+
 Chạy script sau để train model: 
 
 ```
@@ -82,7 +91,7 @@ python3 train.py \
 Sau khi train, sẽ có file best.pt là file weight có f1_score lớn nhất trên tập val.
 ## 3. Inference model
 ```
-!python3 predict.py \
+python3 predict.py \
         --model_name "vgg11" \
         --test_path ./predict \
         --weights ../weights/best.pt \
