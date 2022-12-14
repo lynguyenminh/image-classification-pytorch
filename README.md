@@ -2,6 +2,17 @@
 
 Repo này giúp giải quyết bài toán Image classification bằng các model phổ biến: Efficientnet, VGG, Resnet, GoogleNet. Hơn nữa ta có thể sử dụng transfer learning để tiết kiệm thời gian và tài nguyên tính toán nhưng vẫn đạt được model có độ chính xác cao.
 
+## 0. Clone source code và cài môi trường
+```
+git clone https://github.com/lynguyenminh/image-classification-pytorch.git 
+cd image-classification-pytorch
+
+pip install -r requirements.txt
+
+Nếu gặp lỗi thì pip install -r requirements.txt --no-cache-dir
+
+```
+
 ## 1. Cấu trúc thư mục & chuẩn bị data
 Hãy chuẩn bị data và code theo cấu trúc sau: 
 ```
@@ -50,6 +61,15 @@ Main-folder/
 ```
 
 ## 2. Train model
+**CHÚ Ý**
+
+Ta có thể thực hiện tăng cường dữ liệu trực tiếp bằng Pytorch trước khi train. Sửả code ở [đây](https://github.com/lynguyenminh/image-classification-pytorch/blob/master/src/utils/load_data.py#L18)
+
+Có thể thay đổi hàm loss function tại [đây](https://github.com/lynguyenminh/image-classification-pytorch/blob/master/src/train.py#L48). Các hàm có sẵn là: `CrossEntropyLoss`, `NLLLoss`.
+
+Có thể thay đổi hàm optimization tại [đây.](https://github.com/lynguyenminh/image-classification-pytorch/blob/master/src/train.py#L51). Các hàm có sẵn là: `Adam`, `RAdam`, `SGD`, `Adadelta`, `Adagrad`, `AdamW`, `Adamax`, `ASGD`, `NAdam`, `Rprop`.
+
+
 Chạy script sau để train model: 
 
 ```
