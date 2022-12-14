@@ -2,6 +2,17 @@
 
 Repo này giúp giải quyết bài toán Image classification bằng các model phổ biến: Efficientnet, VGG, Resnet, GoogleNet. Hơn nữa ta có thể sử dụng transfer learning để tiết kiệm thời gian và tài nguyên tính toán nhưng vẫn đạt được model có độ chính xác cao.
 
+## 0. Clone source code và cài môi trường
+```
+git clone https://github.com/lynguyenminh/image-classification-pytorch.git 
+cd image-classification-pytorch
+
+pip install -r requirements.txt
+
+Nếu gặp lỗi thì pip install -r requirements.txt --no-cache-dir
+
+```
+
 ## 1. Cấu trúc thư mục & chuẩn bị data
 Hãy chuẩn bị data và code theo cấu trúc sau: 
 ```
