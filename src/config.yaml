@@ -3,7 +3,7 @@ CLASSNAME:
 - duck
 - panda
 DATA:
-  BATCHSIZES: 16
+  BATCHSIZES: 1
   DATA_DIR: ../data-multi
   IMG_SIZE:
   - 224
@@ -11,14 +11,12 @@ DATA:
   NUM_WORKERS: 4
 MODEL:
   CHECKPOINT: ''
-  EPOCHS: 30
-  EVALUATE_EACH: 2
+  EPOCHS: 3
   LEARNING_RATE: 1.0e-05
   LOSS_FUNCTION: CrossEntropyLoss
-  MODEL_NAME: resnet50
+  MODEL_NAME: vgg11
   NUMCLASS: 3
   OPTIM_FUNCTION: Adam
 WEIGHT:
-  RESULT_DIAGRAM: true
   SAVE_BEST: true
   SAVE_WEIGHT_PATH: ../weights

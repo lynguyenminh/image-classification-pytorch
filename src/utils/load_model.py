@@ -20,7 +20,6 @@ def load_model():
     try:
         if MODEL_NAME == "efficientnetb7":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.efficientnet_b7(pretrained=False)
                 model.classifier = nn.Linear(model.classifier[1].in_features, NUMCLASS)
 
@@ -46,7 +45,6 @@ def load_model():
         
         elif MODEL_NAME == "efficientnetb6":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.efficientnet_b6(pretrained=False)
                 model.classifier = nn.Linear(model.classifier[1].in_features, NUMCLASS)
 
@@ -72,7 +70,6 @@ def load_model():
         
         elif MODEL_NAME == "efficientnetb5":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.efficientnet_b5(pretrained=False)
                 model.classifier = nn.Linear(model.classifier[1].in_features, NUMCLASS)
 
@@ -98,7 +95,6 @@ def load_model():
         
         elif MODEL_NAME == "efficientnetb4":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.efficientnet_b4(pretrained=False)
                 model.classifier = nn.Linear(model.classifier[1].in_features, NUMCLASS)
 
@@ -124,7 +120,6 @@ def load_model():
         
         elif MODEL_NAME == "efficientnetb3":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.efficientnet_b3(pretrained=False)
                 model.classifier = nn.Linear(model.classifier[1].in_features, NUMCLASS)
 
@@ -150,7 +145,6 @@ def load_model():
         
         elif MODEL_NAME == "efficientnetb2":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.efficientnet_b2(pretrained=False)
                 model.classifier = nn.Linear(model.classifier[1].in_features, NUMCLASS)
 
@@ -176,7 +170,6 @@ def load_model():
         
         elif MODEL_NAME == "efficientnetb1":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.efficientnet_b1(pretrained=False)
                 model.classifier = nn.Linear(model.classifier[1].in_features, NUMCLASS)
 
@@ -202,7 +195,6 @@ def load_model():
         
         elif MODEL_NAME == "efficientnetb0":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.efficientnet_b0(pretrained=False)
                 model.classifier = nn.Linear(model.classifier[1].in_features, NUMCLASS)
 
@@ -233,7 +225,6 @@ def load_model():
 
         elif MODEL_NAME == "resnet18":            
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.resnet18(pretrained=False)
                 model.fc = nn.Linear(model.fc.in_features, NUMCLASS)
 
@@ -259,7 +250,6 @@ def load_model():
         
         elif MODEL_NAME == "resnet34":            
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.resnet34(pretrained=False)
                 model.fc = nn.Linear(model.fc.in_features, NUMCLASS)
 
@@ -285,7 +275,6 @@ def load_model():
         
         elif MODEL_NAME == "resnet50":            
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.resnet50(pretrained=False)
                 model.fc = nn.Linear(model.fc.in_features, NUMCLASS)
 
@@ -312,7 +301,6 @@ def load_model():
         
         elif MODEL_NAME == "resnet101":            
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.resnet101(pretrained=False)
                 model.fc = nn.Linear(model.fc.in_features, NUMCLASS)
 
@@ -325,7 +313,6 @@ def load_model():
                 
             else: 
                 model = models.resnet101(pretrained=True)
-                print(model)
                 model.fc = nn.Linear(model.fc.in_features, NUMCLASS)
 
             for param in model.parameters():
@@ -339,7 +326,6 @@ def load_model():
         
         elif MODEL_NAME == "resnet152":            
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.resnet152(pretrained=False)
                 model.fc = nn.Linear(model.fc.in_features, NUMCLASS)
 
@@ -352,7 +338,6 @@ def load_model():
                 
             else: 
                 model = models.resnet152(pretrained=True)
-                print(model)
                 model.fc = nn.Linear(model.fc.in_features, NUMCLASS)
 
             for param in model.parameters():
@@ -369,7 +354,6 @@ def load_model():
 
         elif MODEL_NAME == "vgg19":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.vgg19(pretrained=False)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
@@ -382,7 +366,6 @@ def load_model():
                 
             else: 
                 model = models.vgg19(pretrained=True)
-                print(model)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
             for param in model.parameters():
@@ -396,7 +379,6 @@ def load_model():
         
         elif MODEL_NAME == "vgg19bn":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.vgg19_bn(pretrained=False)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
@@ -409,7 +391,6 @@ def load_model():
                 
             else: 
                 model = models.vgg19_bn(pretrained=True)
-                print(model)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
             for param in model.parameters():
@@ -423,7 +404,6 @@ def load_model():
         
         elif MODEL_NAME == "vgg16":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.vgg16(pretrained=False)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
@@ -436,7 +416,6 @@ def load_model():
                 
             else: 
                 model = models.vgg16(pretrained=True)
-                print(model)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
             for param in model.parameters():
@@ -450,7 +429,6 @@ def load_model():
         
         elif MODEL_NAME == "vgg16bn":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.vgg16_bn(pretrained=False)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
@@ -463,7 +441,6 @@ def load_model():
                 
             else: 
                 model = models.vgg16_bn(pretrained=True)
-                print(model)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
             for param in model.parameters():
@@ -477,7 +454,6 @@ def load_model():
         
         elif MODEL_NAME == "vgg13":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.vgg13(pretrained=False)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
@@ -490,7 +466,6 @@ def load_model():
                 
             else: 
                 model = models.vgg13(pretrained=True)
-                print(model)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
             for param in model.parameters():
@@ -504,7 +479,6 @@ def load_model():
         
         elif MODEL_NAME == "vgg13bn":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.vgg13_bn(pretrained=False)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
@@ -517,7 +491,6 @@ def load_model():
                 
             else: 
                 model = models.vgg13_bn(pretrained=True)
-                print(model)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
             for param in model.parameters():
@@ -531,7 +504,6 @@ def load_model():
         
         elif MODEL_NAME == "vgg11":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.vgg11(pretrained=False)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
@@ -544,7 +516,6 @@ def load_model():
                 
             else: 
                 model = models.vgg11(pretrained=True)
-                print(model)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
             for param in model.parameters():
@@ -558,7 +529,6 @@ def load_model():
         
         elif MODEL_NAME == "vgg11bn":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.vgg11_bn(pretrained=False)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
@@ -571,7 +541,6 @@ def load_model():
                 
             else: 
                 model = models.vgg11_bn(pretrained=True)
-                print(model)
                 model.classifier[6] = nn.Linear(model.classifier[-1].in_features, NUMCLASS)
 
             for param in model.parameters():
@@ -588,7 +557,6 @@ def load_model():
 
         elif MODEL_NAME == "googlenet":
             if CHECKPOINT:
-                print("Loading checkpoint...")
                 model = models.googlenet(pretrained=False)
                 model.fc = nn.Linear(model.fc.in_features, NUMCLASS)
 
@@ -601,7 +569,6 @@ def load_model():
                 
             else: 
                 model = models.googlenet(pretrained=True)
-                print(model)
                 model.fc = nn.Linear(model.fc.in_features, NUMCLASS)
 
             for param in model.parameters():

@@ -1,48 +1,24 @@
-from __future__ import print_function, division
-
-import argparse
-import matplotlib.pyplot as plt
-
 import torch
+import json
 from torch.optim import lr_scheduler
 import torch.backends.cudnn as cudnn
-
-import warnings
-warnings.filterwarnings('ignore')
-
-cudnn.benchmark = True
-plt.ion()
 
 from utils.load_model import load_model
 from utils.load_data import load_data
 from utils.load_optim import load_optimization
 from utils.load_loss import load_loss_function
 from utils.train_model import train_model
-from utils.load_config import load_config, save_config
+from utils.load_config import load_config
 
 
-# def get_parse():
-#     parser = argparse.ArgumentParser()
-#     parser.add_argument('--model_name', type=str, required=True)
-#     parser.add_argument('--data', type=str, required=True)
-#     parser.add_argument('--checkpoint', type=str, required=False)
-#     parser.add_argument('--epochs', type=int, required=True)
-#     parser.add_argument('--batchsize', type=int, required=True)
-#     parser.add_argument('--numclass', type=int, required=True)
-#     parser.add_argument('--save_weights', type=str, required=True)
-#     args = parser.parse_args()
-#     return args
+import warnings
+warnings.filterwarnings('ignore')
 
-from utils.load_config import load_config, save_config
-
-# config = load_config('config.yaml')
-
-# LOSS_FUNCTION = config['MODEL']['LOSS_FUNCTION'] if config['MODEL']['LOSS_FUNCTION'] else 'CrossEntropyLoss'
+cudnn.benchmark = True
 
 
 
 if __name__=="__main__":
-    # args = get_parse()
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     # load data
@@ -61,6 +37,11 @@ if __name__=="__main__":
     # Decay LR by a factor of 0.1 every 7 epochs
     exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
 
+
+
+    print(json.dumps(load_config('config.yaml'), 
+                    sort_keys=True, indent=4))
+                    
     # train model
     train_model(model=model, device=device, dataloaders=dataloaders, 
                 criterion=criterion, optimizer=optimizer_ft, scheduler=exp_lr_scheduler)

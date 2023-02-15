@@ -1,22 +1,16 @@
-from __future__ import print_function, division
-
 import time
 import os
-import matplotlib.pyplot as plt
-
 from sklearn.metrics import accuracy_score, f1_score
-
 import torch
 import torch.backends.cudnn as cudnn
+from utils.load_config import load_config, save_config
 
 
 cudnn.benchmark = True
-plt.ion()
 
 import warnings
 warnings.filterwarnings('ignore')
 
-from utils.load_config import load_config, save_config
 
 
 
@@ -26,7 +20,6 @@ def train_model(model, device, dataloaders, criterion, optimizer, scheduler):
     EPOCHS = config['MODEL']['EPOCHS'] if config['MODEL']['EPOCHS'] else 100
     SAVE_WEIGHT_PATH = config['WEIGHT']['SAVE_WEIGHT_PATH'] if config['WEIGHT']['SAVE_WEIGHT_PATH'] else '../weights'
     SAVE_BEST = config['WEIGHT']['SAVE_BEST'] if config['WEIGHT']['SAVE_BEST'] else False
-    RESULT_DIAGRAM = config['WEIGHT']['RESULT_DIAGRAM'] if config['WEIGHT']['RESULT_DIAGRAM'] else False
 
 
     since = time.time()
@@ -112,5 +105,4 @@ def train_model(model, device, dataloaders, criterion, optimizer, scheduler):
     config['WEIGHT']['SAVE_WEIGHT_PATH'] = SAVE_WEIGHT_PATH
     save_config(config, 'config.yaml')
 
-    # ve bieu do loss, f1
     

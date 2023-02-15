@@ -1,20 +1,30 @@
-# <center>Implement Image classification with Pytorch</center>
+# <center>IMPLEMENT  TRANSFER LEARNING FOR IMAGE CLASSIFICATION IN PYTORCH</center>
 
-Repo này giúp giải quyết bài toán Image classification bằng các model phổ biến: Efficientnet, VGG, Resnet, GoogleNet. Hơn nữa ta có thể sử dụng transfer learning để tiết kiệm thời gian và tài nguyên tính toán nhưng vẫn đạt được model có độ chính xác cao.
+Image classification remains a major challenge in the field of Computer Vision. In this repository, I will be using the PyTorch framework to tackle this problem. Instead of spending time coding a new neural network and training it on custom data, it is better to use transfer learning, which can save time and resources while achieving better results. 
 
-## 0. Clone source code và cài môi trường
-```
-git clone https://github.com/lynguyenminh/image-classification-pytorch.git 
-cd image-classification-pytorch
+This repository implements the following algorithms for image classification using the PyTorch framework: 
+* EfficientNet 
+* ResNet 
+* VGG 
+* GoogLeNet
 
-pip install -r requirements.txt
+## 0. Clone source code and prepare environment
+To get started with this repository, follow these steps:
 
-Nếu gặp lỗi thì pip install -r requirements.txt --no-cache-dir
+Clone the source code from the repository using:
 
-```
+        git clone https://github.com/lynguyenminh/image-classification-pytorch.git 
+        cd image-classification-pytorch
 
-## 1. Cấu trúc thư mục & chuẩn bị data
-Hãy chuẩn bị data và code theo cấu trúc sau: 
+Install the necessary dependencies by running:
+
+        pip install -r requirements.txt. 
+
+Once you've completed these steps, you should be ready to run the code and experiment with the different algorithms.
+
+## 1. Restructure folder and prepare dataset
+Please organizing your datasets for training, validation, and testing following this structure: 
+
 ```
 Main-folder/
 │
