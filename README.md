@@ -1,5 +1,7 @@
 # <center> IMPLEMENT  TRANSFER LEARNING FOR IMAGE CLASSIFICATION IN PYTORCH </center>
  
+ ![68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f313833382f312a6f4233533579484868766f75674a6b50587563386f672e676966](https://user-images.githubusercontent.com/82688630/219080173-05f3bfd9-acad-4a58-8e2f-aa26d73db79f.gif)
+
 Image classification remains a major challenge in the field of Computer Vision. In this repository, I will be using the PyTorch framework to tackle this problem. Instead of spending time coding a new neural network and training it on custom data, it is better to use transfer learning, which can save time and resources while achieving better results. 
 
 This repository implements the following algorithms for image classification using the PyTorch framework: 
