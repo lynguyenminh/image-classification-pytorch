@@ -1,10 +1,8 @@
 fname,predict_class
-/home/lynm/Downloads/classify-problem-20221214T063532Z-001/classify-problem/predict/imgs/091611.jpg.jpg,male
-/home/lynm/Downloads/classify-problem-20221214T063532Z-001/classify-problem/predict/imgs/091615.jpg.jpg,male
-/home/lynm/Downloads/classify-problem-20221214T063532Z-001/classify-problem/predict/imgs/091616.jpg.jpg,male
-/home/lynm/Downloads/classify-problem-20221214T063532Z-001/classify-problem/predict/imgs/091618.jpg.jpg,male
-/home/lynm/Downloads/classify-problem-20221214T063532Z-001/classify-problem/predict/imgs/091619.jpg.jpg,male
-/home/lynm/Downloads/classify-problem-20221214T063532Z-001/classify-problem/predict/imgs/132494.jpg.jpg,male
-/home/lynm/Downloads/classify-problem-20221214T063532Z-001/classify-problem/predict/imgs/132497.jpg.jpg,female
-/home/lynm/Downloads/classify-problem-20221214T063532Z-001/classify-problem/predict/imgs/132499.jpg.jpg,male
-/home/lynm/Downloads/classify-problem-20221214T063532Z-001/classify-problem/predict/imgs/132500.jpg.jpg,female
+../data/val/panda/images (1).jpeg,panda
+../data/val/panda/images (5).jpeg,panda
+../data/val/panda/images (12).jpeg,panda
+../data/val/panda/images (2).jpeg,panda
+../data/val/panda/images.jpeg,duck
+../data/val/panda/images (3).jpeg,panda
+../data/val/panda/images (4).jpeg,panda
