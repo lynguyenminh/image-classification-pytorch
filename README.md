@@ -103,7 +103,7 @@ cd ./src && python train.py
 ## 3. Inference model
 Remember to make sure that the model name, checkpoint, and numclass in the config file match those used in the training phase when using this script to make predictions.
 ```
-python predict.py \
+cd ./src && python predict.py \
         --test_path ../test_img \
         --batch_predict 16
 ```
