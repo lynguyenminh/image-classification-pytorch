@@ -100,7 +100,7 @@ You can also modify other hyperparameters, such as EPOCHS, BATCHSIZE, and LEARNI
 cd ./src && python train.py
 ```
 
-## 3. Inference model
+## 4. Inference model
 Remember to make sure that the model name, checkpoint, and numclass in the config file match those used in the training phase when using this script to make predictions.
 ```
 cd ./src && python predict.py \
