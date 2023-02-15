@@ -16,7 +16,7 @@ config = load_config('config.yaml')
 IMG_SIZE = config['DATA']['IMG_SIZE'] if config['DATA']['IMG_SIZE'] else (224, 224)
 CLASS_NAMES = config['CLASSNAME']
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-args = get_parse()
+
 
 
 # declare transforms for dataset
@@ -49,21 +49,22 @@ class ImageDataset(Dataset):
         return image
 
 
+if __name__ == '__main__':
+    args = get_parse()
 
-# load model
-model = load_model()
-model = model.to(device)
-model.eval()
+    # load model
+    model = load_model()
+    model = model.to(device)
+    model.eval()
 
 
-
-
-# 2. check xem image or folder
-if os.path.isdir(args.test_path): 
-    image_paths = [os.path.join(args.test_path, i) for i in os.listdir(args.test_path)]
-elif os.path.isfile(args.test_path):
-    image_paths = args.test_path
-    
-dataset = ImageDataset(image_paths, data_transforms)
-dataloaders = (DataLoader(dataset, batch_size=args.batch_predict, shuffle=False), image_paths)
-predict(model, dataloaders)
+    # 2. Predict
+    if os.path.isdir(args.test_path): 
+        image_paths = [os.path.join(args.test_path, i) for i in os.listdir(args.test_path)]
+    elif os.path.isfile(args.test_path):
+        image_paths = [args.test_path]
+        
+    dataset = ImageDataset(image_paths, data_transforms)
+    dataloaders = (DataLoader(dataset, batch_size=args.batch_predict, shuffle=False), image_paths)
+    predict(model, dataloaders)
+    print('Predict completed! Result is saved in predict.csv')

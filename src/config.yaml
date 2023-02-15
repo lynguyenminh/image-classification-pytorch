@@ -1,7 +1,4 @@
-CLASSNAME:
-- cat
-- duck
-- panda
+
 DATA:
   BATCHSIZES: 16
   DATA_DIR: ../data
@@ -10,7 +7,7 @@ DATA:
   - 224
   NUM_WORKERS: 4
 MODEL:
-  CHECKPOINT: /home/lynguyenminh/Workspace/Projects/image-classification-pytorch/weights/best.pt
+  CHECKPOINT: ../weights/best.pt
   EPOCHS: 30
   LEARNING_RATE: 1.0e-05
   LOSS_FUNCTION: CrossEntropyLoss

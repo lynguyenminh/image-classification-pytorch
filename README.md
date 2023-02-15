@@ -48,11 +48,10 @@ Main-folder/
 |           ├── img_4.jpg
 |           └── ...
 |
-├── predict/ - public test images
-│   └── imgs
-|       ├── test_1.jpg
-|       ├── test_2.jpg
-|       └── ...
+├── test_img/ - public test images
+|   ├── test_1.jpg
+|   ├── test_2.jpg
+|   └── ...
 |
 ├── src/ - source code
 │   ├── config.yaml
@@ -60,14 +59,16 @@ Main-folder/
 │   ├── train.py - Code train model
 │   └── utils
 |       ├── load_data.py
+|       ├── load_config.py
 |       ├── load_model.py
 |       ├── load_optim.py
 |       ├── load_loss.py
+|       ├── predict_model.py
 |       └── train_model.py
 |
 └── weights/ - this folder contains weights after training.
     ├── best.pt
-    └── epoch_1.pt
+    └── epoch_1.ptmodel
 ```
 
 ## 2. Augment dataset
@@ -98,20 +99,14 @@ cd ./src && python train.py
 ```
 
 ## 3. Inference model
+Remember to make sure that the model name, checkpoint, and numclass in the config file match those used in the training phase when using this script to make predictions.
 ```
-python3 predict.py \
-        --model_name "vgg11" \
-        --test_path ./predict \
-        --weights ../weights/best.pt \
-        --numclass 2
+python predict.py \
+        --test_path ../test_img \
+        --batch_predict 16
 ```
---model_name: Giống như ở phần train.
+--test_path: path to public test images. It can be path to file or directory.
 
---test_path: path chứa ảnh test. Path này có thể là folder hay file image đều đươc.
+--batch_predict: Batchsize used to predict.
 
---weights: path file weight.
-
---numclass: số class model cần phân loại (=numclass lúc train).
-Sau khi inference, thì kết quả lưu trong `predict.csv`.
-
-Nếu gặp lỗi, vui lòng tạo issue hay liên hệ trực tiếp với tôi: 20521592@gm.uit.edu.vn.
+then, you can check result in `predict.csv`.
