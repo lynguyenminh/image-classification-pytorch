@@ -77,7 +77,7 @@ python3 train.py \
         --model_name "resnet18" \
         --epoch 10 \
         --data ../data \
-        --batchsize 16 \
+        --batchsize 1 \
         --save_weights ../weights \
         --numclass 2
 ```

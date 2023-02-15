@@ -16,18 +16,28 @@ plt.ion()
 import warnings
 warnings.filterwarnings('ignore')
 
+from utils.load_config import load_config, save_config
 
 
-def train_model(model, args, device, dataloaders, criterion, optimizer, scheduler):
+
+def train_model(model, device, dataloaders, criterion, optimizer, scheduler):
+    config = load_config('config.yaml')
+
+    EPOCHS = config['MODEL']['EPOCHS'] if config['MODEL']['EPOCHS'] else 100
+    SAVE_WEIGHT_PATH = config['WEIGHT']['SAVE_WEIGHT_PATH'] if config['WEIGHT']['SAVE_WEIGHT_PATH'] else '../weights'
+    SAVE_BEST = config['WEIGHT']['SAVE_BEST'] if config['WEIGHT']['SAVE_BEST'] else False
+    RESULT_DIAGRAM = config['WEIGHT']['RESULT_DIAGRAM'] if config['WEIGHT']['RESULT_DIAGRAM'] else False
+
+
     since = time.time()
     best_acc = 0.0
 
     # create dir save weights
-    if not os.path.isdir(args.save_weights): 
-        os.makedirs(args.save_weights)
+    if not os.path.isdir(SAVE_WEIGHT_PATH): 
+        os.makedirs(SAVE_WEIGHT_PATH)
 
-    for epoch in range(args.epochs):
-        print(f'Epoch {epoch}/{args.epochs - 1}\n{"-" * 10}')
+    for epoch in range(EPOCHS):
+        print(f'Epoch {epoch}/{EPOCHS - 1}\n{"-" * 10}')
         time_epoch = time.time()    # start time of phase
 
         # Each epoch has a training and validation phase
@@ -65,7 +75,7 @@ def train_model(model, args, device, dataloaders, criterion, optimizer, schedule
                 list_groundtruth += list(labels.data.cpu().detach().numpy())
 
             epoch_loss = running_loss / len(list_groundtruth)
-            f1 = f1_score(list_groundtruth, list_predict)
+            f1 = f1_score(list_groundtruth, list_predict, average='macro')
             acc = accuracy_score(list_groundtruth, list_predict)
 
             if phase == 'train':
@@ -76,19 +86,20 @@ def train_model(model, args, device, dataloaders, criterion, optimizer, schedule
             else: 
                 print(f'In the validation phase: Loss = {epoch_loss:.4f}\t Acc score: {acc:.4f}\t F1_score = {f1:.4f}')
 
-            # Save best model
-            if phase == 'val' and f1 > best_acc:
-                best_acc = f1
-                torch.save({
-                    'model_state_dict': model.state_dict(),
-                    'optimizer_state_dict': optimizer.state_dict()
-                    }, os.path.join(args.save_weights, 'best.pt'))
+            # Save the best model
+            if SAVE_BEST: 
+                if phase == 'val' and f1 > best_acc:
+                    best_acc = f1
+                    torch.save({
+                        'model_state_dict': model.state_dict(),
+                        'optimizer_state_dict': optimizer.state_dict()
+                        }, os.path.join(SAVE_WEIGHT_PATH, 'best.pt'))
         
         # save model
         torch.save({
             'model_state_dict': model.state_dict(),
             'optimizer_state_dict': optimizer.state_dict()
-            }, os.path.join(args.save_weights, "".join(('epoch_', str(epoch), '.pt'))))
+            }, os.path.join(SAVE_WEIGHT_PATH, "".join(('epoch_', str(epoch), '.pt'))))
         
         print(f'Total time for epoch {epoch}: {time.time()-time_epoch:.2f}s\n')
 
@@ -96,3 +107,10 @@ def train_model(model, args, device, dataloaders, criterion, optimizer, schedule
     print(f'\n\nTraining complete in {time_elapsed // 60:.0f}m {time_elapsed % 60:.0f}s')
     print(f'Best val Acc: {best_acc:4f}')
 
+    # update config.
+    config['MODEL']['EPOCHS'] = EPOCHS
+    config['WEIGHT']['SAVE_WEIGHT_PATH'] = SAVE_WEIGHT_PATH
+    save_config(config, 'config.yaml')
+
+    # ve bieu do loss, f1
+    

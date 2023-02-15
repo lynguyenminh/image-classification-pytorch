@@ -1,4 +1,24 @@
 CLASSNAME:
-- female
-- male
-NUMCLASS: 2
+- cat
+- duck
+- panda
+DATA:
+  BATCHSIZES: 16
+  DATA_DIR: ../data-multi
+  IMG_SIZE:
+  - 224
+  - 224
+  NUM_WORKERS: 4
+MODEL:
+  CHECKPOINT: ''
+  EPOCHS: 30
+  EVALUATE_EACH: 2
+  LEARNING_RATE: 1.0e-05
+  LOSS_FUNCTION: CrossEntropyLoss
+  MODEL_NAME: resnet50
+  NUMCLASS: 3
+  OPTIM_FUNCTION: Adam
+WEIGHT:
+  RESULT_DIAGRAM: true
+  SAVE_BEST: true
+  SAVE_WEIGHT_PATH: ../weights

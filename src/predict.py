@@ -54,7 +54,7 @@ class_names = config['CLASSNAME']
 
 
 # load model
-model = load_model(model_name=args.model_name, checkpoint=args.weights)
+model = load_model()
 model = model.to(device)
 model.eval()
 
