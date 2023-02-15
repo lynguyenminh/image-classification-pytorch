@@ -1,10 +1,7 @@
-CLASSNAME:
-- cat
-- duck
-- panda
+
 DATA:
   BATCHSIZES: 1
-  DATA_DIR: ../data-multi
+  DATA_DIR: ../data
   IMG_SIZE:
   - 224
   - 224
@@ -14,7 +11,7 @@ MODEL:
   EPOCHS: 3
   LEARNING_RATE: 1.0e-05
   LOSS_FUNCTION: CrossEntropyLoss
-  MODEL_NAME: vgg11
+  MODEL_NAME: resnet18
   NUMCLASS: 3
   OPTIM_FUNCTION: Adam
 WEIGHT:

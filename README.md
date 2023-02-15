@@ -1,5 +1,5 @@
-# <center>IMPLEMENT  TRANSFER LEARNING FOR IMAGE CLASSIFICATION IN PYTORCH</center>
-
+# <center> IMPLEMENT  TRANSFER LEARNING FOR IMAGE CLASSIFICATION IN PYTORCH </center>
+ 
 Image classification remains a major challenge in the field of Computer Vision. In this repository, I will be using the PyTorch framework to tackle this problem. Instead of spending time coding a new neural network and training it on custom data, it is better to use transfer learning, which can save time and resources while achieving better results. 
 
 This repository implements the following algorithms for image classification using the PyTorch framework: 
@@ -70,46 +70,33 @@ Main-folder/
     └── epoch_1.pt
 ```
 
-## 2. Train model
-**CHÚ Ý**
+## 2. Augment dataset
+Currently, I only resize and normalize the training images. However, to achieve better results, you may want to apply additional augmentation techniques. You can modify the data loading process in the load_data.py file [line 23](https://github.com/lynguyenminh/image-classification-pytorch/blob/master/src/utils/load_data.py#L23) to include these techniques.
 
-Ta có thể thực hiện tăng cường dữ liệu trực tiếp bằng Pytorch trước khi train. Sửả code ở [đây](https://github.com/lynguyenminh/image-classification-pytorch/blob/master/src/utils/load_data.py#L18)
+## 3. Train model
 
-Có thể thay đổi hàm loss function tại [đây](https://github.com/lynguyenminh/image-classification-pytorch/blob/master/src/train.py#L48). Các hàm có sẵn là: `CrossEntropyLoss`, `NLLLoss`.
+Before training model, you should change some infos in config file. 
 
-Có thể thay đổi hàm optimization tại [đây.](https://github.com/lynguyenminh/image-classification-pytorch/blob/master/src/train.py#L51). Các hàm có sẵn là: `Adam`, `RAdam`, `SGD`, `Adadelta`, `Adagrad`, `AdamW`, `Adamax`, `ASGD`, `NAdam`, `Rprop`.
+* Loss function: Currently, the implementation only supports two loss functions: `CrossEntropyLoss` and `NLLLoss`. However, `CrossEntropyLoss` is recommended as it can be used for both binary and multi-class classification. You can select your preferred loss function in the configuration file. 
+* Optimization function: Currently, the implementation supports several optimization functions including Adam, `RAdam`, `SGD`, `Adadelta`, `Adagrad`, `AdamW`, `Adamax`, `ASGD`, `NAdam`, and `Rprop`. However, `Adam` is recommended. You can select your preferred optimization function in the configuration file.
 
+* MODEL_NAME: You can choose one of those: 
+  * Efficientnet: `efficientnetB0`, `efficientnetB1`, `efficientnetB2`, `efficientnetB3`, `efficientnetB4`, `efficientnetB5`, `efficientnetB6`, `efficientnetB7`.
+  * Resnet: `resnet18`, `resnet34`, `resnet50`, `resnet101`, `resnet152`.
+  * VGG: `vgg11`, `vgg11bn`, `vgg13`, `vgg13bn`, `vgg16`, `vgg16bn`, `vgg19`, `vgg19bn`.
+  * Googlenet: `googlenet`
 
-Chạy script sau để train model: 
+* SAVE_WEIGHT_PATH: The directory to save weight
+* DATA_DIR: The directory to dataset
+* CHECKPOINT: The directory to pretrain (checkpoint)
+* NUMCLASS: Number of classes
+
+You can also modify other hyperparameters, such as EPOCHS, BATCHSIZE, and LEARNING_RATE. Now, everything is ready for training.
 
 ```
-python3 train.py \
-        --model_name "resnet18" \
-        --epoch 10 \
-        --data ../data \
-        --batchsize 1 \
-        --save_weights ../weights \
-        --numclass 2
+cd ./src && python train.py
 ```
 
---model_name: tên thuật toán phân loại: 
-
-* Efficientnet: `efficientnetb0`, `efficientnetb1`, `efficientnetb2`, `efficientnetb3`, `efficientnetb4`, `efficientnetb5`, `efficientnetb6`, `efficientnetb7`
-* VGG: `vgg11`, `vgg11bn`, `vgg13`, `vgg13bn`, `vgg16`, `vgg16bn`, `vgg19`, `vgg19bn`
-* Resnet: `resnet18`, `resnet34`, `resnet50`, `resnet101`, `resnet115`
-* Googlenet: `googlenet` 
-
---epoch: số epoch train model.
-
---data: path của data train.
-
---batchsize: batchsize. Chú ý nếu máy yếu thì giá trị batchsize nên nhỏ.
-
---save_weights: path lưu weight sau khi train.
-
---numclass: số class muốn train.
-
-Sau khi train, sẽ có file best.pt là file weight có f1_score lớn nhất trên tập val.
 ## 3. Inference model
 ```
 python3 predict.py \
