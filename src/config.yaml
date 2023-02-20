@@ -7,7 +7,7 @@ DATA:
   - 224
   NUM_WORKERS: 4
 MODEL:
-  CHECKPOINT: ../weights/best.pt
+  CHECKPOINT: ''
   EPOCHS: 30
   LEARNING_RATE: 1.0e-05
   LOSS_FUNCTION: CrossEntropyLoss
